@@ -1,6 +1,6 @@
-# CS 122 Project - Displaying stocks using TensorFlow
+# CS 122 Project - TensorFlow and Financial Applications
 
-This is the introduction to employing TensorFlow to display stocks.
+This is the introduction to employing TensorFlow for Finance-Related Applications.
 
 
 ## Notes
