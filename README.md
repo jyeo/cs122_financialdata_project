@@ -28,7 +28,7 @@ Other features could include:
 
 * Data Collection and Storage Plan (written by Aaron Nguyen)
 
-For data collection, our team will use the SEC EDGAR API to retrieve real-time and historical data.
+For data collection, our team will use the SEC EDGAR API to retrieve both real-time and historical data.
 For storage utilising CSV files, multiple directories organised by each unique ticker symbol. 
 CSV files will be devised into annual unique ticker symbol directories.
 
