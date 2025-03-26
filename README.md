@@ -7,6 +7,9 @@ Uilising the SEC EDGAR API and Python, our team collects real-time and financial
 
 At the end, our data will be outputted using CSV files.
 
+Financial raw data may employ TensorFlow and/or Pandas Data-reader to organise/sort into visual storytelling.
+Please see Project Description for more details.
+
 ## Authors
 
 * Aaron Nguyen
@@ -18,7 +21,7 @@ At the end, our data will be outputted using CSV files.
 ## Project Outline/Plan
 * Interface Plan
 
-The User Interface will allow users to browse standard company financial data.
+The User Interface will allow users to browse publicly-disclosed company financial data.
 
 Due to time restraints, our team's user interface will be limited to browsing, comparison features may be added if time allowance is found.
 
@@ -34,10 +37,16 @@ CSV files will be devised into annual unique ticker symbol directories.
 
 * Data Analysis and Visualization Plan (written by Jasper Yeo)
 Using financial data retrieved from SEC EDGAR servers (with 0.1 second delays per request), main raw retrieval stream will be categorised into the following: data of revenue, net income, total assets, and total liabilities.
+Modified Financial Datasets may be used within the team's user interface for further visual storytelling.
 
 Visual
 Pandas Data-reader-related applications may be used to use raw data to be placed into our team's main interface.
 Further Visualisation may employ TensorFlow to further apply analysis and improve UX utilisation.
+
+Possible Storytelling may include:
+* Top 10 companies based on strengths from total asssets - total liabilities
+* Graphs that show annual changes within a 10 year span
+* Other stories may be added in lieu of time
 
 ## Notes
 
