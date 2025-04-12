@@ -1,4 +1,4 @@
-# CS 122 Project - TensorFlow and Financial Applications
+# CS 122 Project - NEW PROJECT SPOTIFY ANALYSIS
 
 For "TensorFlow and Financial Applications", our team uses SEC EDGAR to collect public financial data and employ TensorFlow to analyse and model financial trends. 
 
