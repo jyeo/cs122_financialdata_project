@@ -21,19 +21,22 @@ Please see Project Description for more details.
 ## Project Outline/Plan
 * Interface Plan
 
-The User Interface will allow users to browse publicly-disclosed company financial data.
+The User Interface will allow users to search for an artist and view graphs based on their Spotify data.
 
-Due to time restraints, our team's user interface will be limited to browsing, comparison features may be added if time allowance is found.
+Our team’s UI will focus on artist searches and data visualization, with potential for additional features such as track comparisons or genre insights.
 
-Other features could include:
-* analysis of specific company trends
-* financial reports
+Possible other features:
+
+Top tracks over time
+
+Visual comparison of multiple artists
+
+Popularity timeline
 
 * Data Collection and Storage Plan (written by Aaron Nguyen)
 
-For data collection, our team will use the SEC EDGAR API to retrieve both real-time and historical data.
-For storage utilising CSV files, multiple directories organised by each unique ticker symbol. 
-CSV files will be devised into annual unique ticker symbol directories.
+For data collection, we will use the Spotify Web API to retrieve artist details, popularity metrics, discography, and top track information.
+Data will be retrieved in real time through authorized requests and temporarily stored as JSON or CSV for processing. If needed, directories will be organized by Spotify ID.
 
 * Data Analysis and Visualization Plan (written by Jasper Yeo)
 Using financial data retrieved from SEC EDGAR servers (with 0.1 second delays per request), main raw retrieval stream will be categorised into the following: data of revenue, net income, total assets, and total liabilities.
