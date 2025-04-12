@@ -19,7 +19,8 @@ Please see Project Description for more details.
 ## Project Description (5 sentences)
 
 ## Project Outline/Plan
-* Interface Plan
+
+Interface Plan
 
 The User Interface will allow users to search for an artist and view graphs based on their Spotify data.
 
@@ -27,11 +28,11 @@ Our team’s UI will focus on artist searches and data visualization, with poten
 
 Possible other features:
 
-Top tracks over time
+* Top tracks over time
 
-Visual comparison of multiple artists
+*Visual comparison of multiple artists
 
-Popularity timeline
+* Popularity timeline
 
 * Data Collection and Storage Plan (written by Aaron Nguyen)
 
