@@ -39,7 +39,7 @@ Possible other features:
 For data collection, we will use the Spotify Web API to retrieve artist details, popularity metrics, discography, and top track information.
 Data will be retrieved in real time through authorized requests and temporarily stored as JSON or CSV for processing. If needed, directories will be organized by Spotify ID.
 
-* Data Analysis and Visualization Plan (written by Jasper Yeo)
+## Data Analysis and Visualization Plan (written by Jasper Yeo)
 Using financial data retrieved from SEC EDGAR servers (with 0.1 second delays per request), main raw retrieval stream will be categorised into the following: data of revenue, net income, total assets, and total liabilities.
 Modified Financial Datasets may be used within the team's user interface for further visual storytelling.
 
