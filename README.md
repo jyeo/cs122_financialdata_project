@@ -30,11 +30,11 @@ Possible other features:
 
 * Top tracks over time
 
-*Visual comparison of multiple artists
+* Visual comparison of multiple artists
 
 * Popularity timeline
 
-* Data Collection and Storage Plan (written by Aaron Nguyen)
+## Data Collection and Storage Plan (written by Aaron Nguyen)
 
 For data collection, we will use the Spotify Web API to retrieve artist details, popularity metrics, discography, and top track information.
 Data will be retrieved in real time through authorized requests and temporarily stored as JSON or CSV for processing. If needed, directories will be organized by Spotify ID.
