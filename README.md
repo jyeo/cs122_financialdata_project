@@ -12,7 +12,7 @@
 
 Interface Plan
 
-The User Interface will allow users to search for an artist and view graphs based on their Spotify data.
+The User Interface will allow users to search for an artist and view graphs based on Spotify data.
 
 Our team’s UI will focus on artist searches and data visualization, with potential for additional features such as track comparisons or genre insights.
 
@@ -26,8 +26,9 @@ Possible other features:
 
 ## Data Collection and Storage Plan (written by Aaron Nguyen)
 
-For data collection, we will use the Spotify Web API to retrieve artist details, popularity metrics, discography, and top track information.
-Data will be retrieved in real time through authorized requests and temporarily stored as JSON or CSV for processing. If needed, directories will be organized by Spotify ID.
+For data collection, we will use the Spotify Web API to retrieve data details artist details, popularity metrics, discography, and top track information.
+Data will be retrieved in real time or through a cache through authorised requests and temporarily stored as JSON or CSV for processing. If needed, directories will be organized by Spotify ID.
+
 
 ## Data Analysis and Visualization Plan (written by Jasper Yeo)
 
