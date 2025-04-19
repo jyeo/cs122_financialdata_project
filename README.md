@@ -8,6 +8,13 @@
 
 ## Project Description (5 sentences)
 
+Our team is creating a Spotify application that gives users new retrospectives.
+Our user interface will enable users access to our app's backend that captures snapshots of data for local storage.
+The pipelines follow the generic format of sending a request to Spotify's API to retrieve a snapshot of data into a cache ,,, or a CSV.
+From the data containers, analysis that enables storytelling that includes: top tracks over preset time intervals, comparison of multiple artists, bar chart on a song track's volatility, and etc...
+The storage of data analysis into graphical approaches like pandas and etc... will be given to the user via our app.
+
+
 ## Project Outline/Plan
 
 Interface Plan
@@ -27,7 +34,10 @@ Possible other features:
 ## Data Collection and Storage Plan (written by Aaron Nguyen)
 
 For data collection, we will use the Spotify Web API to retrieve data details artist details, popularity metrics, discography, and top track information.
-Data will be retrieved in real time or through a cache through authorised requests and temporarily stored as JSON or CSV for processing. If needed, directories will be organized by Spotify ID.
+
+Data will be retrieved in real time or through a cache through authorised requests and temporarily stored as JSON or CSV for processing. 
+ALternatively, the design may be changed to store data with CSV or a cache - depending on overhead costs.
+If needed, directories will be organized by Spotify ID.
 
 
 ## Data Analysis and Visualization Plan (written by Jasper Yeo)
