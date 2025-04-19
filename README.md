@@ -35,7 +35,8 @@ Data will be retrieved in real time or through a cache through authorised reques
 
 Visual
 Pandas Data-reader-related applications may be used to use raw data to be placed into our team's main interface.
-Further Visualisation may employ TensorFlow to further apply analysis and improve UX utilisation.
+
+Main features of UI will guide the storytelling powered by the snapshot data retrieved from a cache.
 
 
 ## Notes
