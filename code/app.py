@@ -2,10 +2,6 @@ from flask import Flask, render_template, request
 import requests
 import base64
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-
 app = Flask(__name__)
 
 CLIENT_ID = "2ab213b0ce364015aca93253350b4c49"
@@ -57,46 +53,6 @@ def get_top_albums(artist_id, token):
         top_albums.append({'name': name, 'image': image_url})
 
     return top_albums
-
-#Save tracks and then store in CSV
-def get_top_tracks(artist_id, token):
-    url = f"https://api.spotify.com/v1/artists/{artist_id}/top-tracks"
-    headers = {"Authorization": f"Bearer {token}"}
-    params = {"market": "US"}
-    response = requests.get(url, headers=headers, params=params)
-    return response.json()["tracks"]
-
-
-def save_tracks_to_csv(tracks, filename="tracks.csv"):
-    df = pd.DataFrame([{
-        'track_name': t['name'],
-        'popularity': t['popularity'],
-        'album': t['album']['name'],
-        'release_date': t['album']['release_date']
-    } for t in tracks])
-    df.to_csv(filename, index=False)
-
-# Visualise popularity
-
-def analyze_popularity(tracks):
-    popularities = [t['popularity'] for t in tracks]
-    return {
-        'average_popularity': np.mean(popularities),
-        'max_popularity': np.max(popularities),
-        'min_popularity': np.min(popularities)
-    }
-
-def plot_track_popularity(tracks):
-    names = [t['name'] for t in tracks]
-    pops = [t['popularity'] for t in tracks]
-
-    plt.figure(figsize=(10, 6))
-    plt.barh(names, pops)
-    plt.xlabel('Popularity')
-    plt.title('Top Track Popularity')
-    plt.gca().invert_yaxis()
-    plt.tight_layout()
-    plt.show()
 
 
 @app.route("/", methods=["GET", "POST"])
