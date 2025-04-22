@@ -1,4 +1,4 @@
-# CS 122 Project - SPOTIFY ANALYSIS: Browsing through
+# CS 122 Project - SPOTIFY UI: Visual Storytelling through Data Analysis
 
 ## Authors
 
