@@ -34,6 +34,25 @@
       height: auto;
       border-radius: 5px;
     }
+    .plot-section img {
+      width: 100%;
+      max-width: 700px;
+      display: block;
+      margin: auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: white;
+      padding: 10px;
+    }
+    .analysis-summary {
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 10px 20px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    }
   </style>
   <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
 </head>
@@ -74,3 +93,22 @@
   {% endif %}
 </body>
 </html>
+
+  <!-- Analysis -->
+  {% if analysis %}
+    <section class="analysis-summary">
+      <h3>Top Track Popularity Analysis</h3>
+      <ul>
+        <li>Average Popularity: {{ "%.2f" | format(analysis.average_popularity) }}</li>
+        <li>Max Popularity: {{ analysis.max_popularity }}</li>
+        <li>Min Popularity: {{ analysis.min_popularity }}</li>
+      </ul>
+    </section>
+  {% endif %}
+
+  <!-- Plot -->
+  {% if plot_path %}
+    <section class="plot-section">
+      <img src="{{ url_for('static', filename=plot_path) }}" alt="Track Popularity Plot">
+    </section>
+  {% endif %}
