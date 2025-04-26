@@ -1,114 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Graphify</title>
-  <style>
-    html, body {
-      padding: 0;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-      font-family: Arial, sans-serif;
-    }
-    #viewDiv {
-      padding: 20px;
-    }
-    #albums-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 20px;
-    }
-    .album-card {
-      width: 200px;
-      text-align: center;
-      border: 1px solid #ddd;
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    }
-    .album-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 5px;
-    }
-    .plot-section img {
-      width: 100%;
-      max-width: 700px;
-      display: block;
-      margin: auto;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background-color: white;
-      padding: 10px;
-    }
-    .analysis-summary {
-      margin: 20px auto;
-      max-width: 600px;
-      padding: 10px 20px;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-    }
-  </style>
-  <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Artist Analysis</title>
 </head>
 <body>
-  <h1>Graphify</h1>
-  <section id="search-section">
-    <p>Search for an artist:</p>
-    <form id="artistForm" method="POST">
-      <input type="text" name="artist_name" id="artistInput" placeholder="Enter artist name" required>
-      <button type="submit">Search</button>
+    <h1>Spotify Artist Analysis</h1>
+
+    <form method="POST">
+        <label for="artist_name">Enter Artist Name:</label>
+        <input type="text" id="artist_name" name="artist_name" required>
+        <button type="submit">Search</button>
     </form>
-  </section>
 
-  <!-- Artist -->
-  {% if artist %}
-    <div id="viewDiv">
-      {% if artist.error %}
-        <p>{{ artist.error }}</p>
-      {% else %}
-        <h2>{{ artist.name }}</h2>
-        <p>Followers: {{ "{:,}".format(artist.followers.total) }}</p>
-        <p>Popularity (0-100): {{ artist.popularity }}</p>
-        <img src="{{ artist.images[0].url }}" alt="{{ artist.name }}" width="300">
-      {% endif %}
-    </div>
-  {% endif %}
+    {% if artist %}
+        <h2>Artist: {{ artist["name"] }}</h2>
+        {% if "error" in artist %}
+            <p>{{ artist["error"] }}</p>
+        {% else %}
+        <h3>Top Albums:</h3>
+        <ul>
+            {% for album in albums %}
+                <li>
+                    <strong>{{ album["name"] }}</strong>
+                    <br>
+                    <img src="{{ album['image'] }}" alt="Album Cover" width="100">
+                </li>
+            {% endfor %}
+        </ul>
 
-  <!-- Albums -->
-  {% if albums and albums|length > 0 %}
-    <section id="albums-section">
-      {% for album in albums %}
-        <div class="album-card">
-          <img src="{{ album.image }}" alt="{{ album.name }}">
-          <p>{{ album.name }}</p>
-        </div>
-      {% endfor %}
-    </section>
-  {% endif %}
+            <h3>Top Tracks:</h3>
+            <ul>
+                {% for track in tracks %}
+                    <li>
+                        <strong>{{ track["name"] }}</strong> (Popularity: {{ track["popularity"] }})
+                        <br>
+                        Album: {{ track["album_name"] }}
+                        <br>
+                        <img src="{{ track["album_image"] }}" alt="Album Cover" width="100">
+                        <br>
+                        <a href="{{ track["track_url"] }}" target="_blank">Listen on Spotify</a>
+                        {% if track["preview_url"] %}
+                            <br>
+                            <audio controls>
+                                <source src="{{ track["preview_url"] }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            {% if track_analysis %}
+                <h3>Track Analysis:</h3>
+                <ul>
+                    <li>Average Popularity: {{ track_analysis["average_popularity"] }}</li>
+                    <li>Max Popularity: {{ track_analysis["max_popularity"] }}</li>
+                    <li>Min Popularity: {{ track_analysis["min_popularity"] }}</li>
+                </ul>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    {% if plot_path %}
+    <h3>Track Popularity Visualization:</h3>
+    <img src="{{ plot_path }}" alt="Track Popularity Bar Chart" width="600">
+    {% endif %}
 </body>
 </html>
-
-  <!-- Analysis -->
-  {% if analysis %}
-    <section class="analysis-summary">
-      <h3>Top Track Popularity Analysis</h3>
-      <ul>
-        <li>Average Popularity: {{ "%.2f" | format(analysis.average_popularity) }}</li>
-        <li>Max Popularity: {{ analysis.max_popularity }}</li>
-        <li>Min Popularity: {{ analysis.min_popularity }}</li>
-      </ul>
-    </section>
-  {% endif %}
-
-  <!-- Plot -->
-  {% if plot_path %}
-    <section class="plot-section">
-      <img src="{{ url_for('static', filename=plot_path) }}" alt="Track Popularity Plot">
-    </section>
-  {% endif %}

@@ -23,6 +23,8 @@ def get_artist_info(artist_name, token):
     headers = {"Authorization": f"Bearer {token}"}
     params = {"q": artist_name, "type": "artist", "limit": 1}
     response = requests.get(search_url, headers=headers, params=params)
+    response.raise_for_status()
+    
     data = response.json()
     if data["artists"]["items"]:
         return data["artists"]["items"][0]
@@ -38,8 +40,9 @@ def get_top_albums(artist_id, token):
         "market": "US"
     }
     headers = {"Authorization": f"Bearer {token}"}
-    albums_response = requests.get(albums_url, headers=headers, params=albums_params)
-    albums_data = albums_response.json()
+    response = requests.get(albums_url, headers=headers, params=albums_params)
+    response.raise_for_status()
+    albums_data = response.json()
     albums = albums_data.get("items", [])
 
     top_albums = []
@@ -50,3 +53,26 @@ def get_top_albums(artist_id, token):
         top_albums.append({'name': name, 'image': image_url})
 
     return top_albums
+
+#Get album tracks from artist id
+def get_top_tracks(artist_id, token, market="US"):
+    top_tracks_url = f"https://api.spotify.com/v1/artists/{artist_id}/top-tracks"
+    headers = {"Authorization": f"Bearer {token}"}
+    params = {"market": market}
+    
+    response = requests.get(top_tracks_url, headers=headers, params=params)
+    response.raise_for_status()
+    tracks_data = response.json()
+    
+    top_tracks = []
+    for track in tracks_data.get("tracks", []):
+        top_tracks.append({
+            "name": track.get("name"),
+            "popularity": track.get("popularity"),
+            "preview_url": track.get("preview_url"),
+            "album_name": track.get("album", {}).get("name"),
+            "album_image": track.get("album", {}).get("images", [{}])[0].get("url", ""),
+            "track_url": track.get("external_urls", {}).get("spotify", "")
+        })
+    
+    return top_tracks
