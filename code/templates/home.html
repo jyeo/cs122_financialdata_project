@@ -8,11 +8,39 @@
 <body>
     <h1>Spotify Artist Analysis</h1>
 
+    <! PAPARAZZI >
     <form method="POST">
         <label for="artist_name">Enter Artist Name:</label>
         <input type="text" id="artist_name" name="artist_name" required>
         <button type="submit">Search</button>
     </form>
+
+    <hr>
+
+    <! FOUNTAIN PEN >
+
+{# Manual Control - OBSOLETE #}
+{#<form action="/set_font" method="post">#}
+{#    <label for="font">Choose a font:</label>#}
+{#    <select name="font" id="font">#}
+{#        <option value="general" {% if current_font == 'general' %}selected{% endif %}>Default (Unicode)</option>#}
+{#        <option value="chinese" {% if current_font == 'chinese' %}selected{% endif %}>Chinese (Noto Sans SC)</option>#}
+{#        <option value="japanese" {% if current_font == 'japanese' %}selected{% endif %}>Japanese (Noto Sans JP)</option>#}
+{#        <option value="korean" {% if current_font == 'korean' %}selected{% endif %}>Korean (Noto Sans KR)</option>#}
+{#    </select>#}
+{#    <button type="submit">Apply Font</button>#}
+{#</form>#}
+
+    {% if current_font %}
+        <p><strong>Current Font:</strong> {{ current_font }}</p>
+    {% endif %}
+
+    <! SLAP THE APPY >
+    <form action="/refresh" method="post" style="margin-top: 20px;">
+        <button type="submit">Refresh App</button>
+    </form>
+
+    <hr>
 
     {% if artist %}
         <h2>Artist: {{ artist["name"] }}</h2>
