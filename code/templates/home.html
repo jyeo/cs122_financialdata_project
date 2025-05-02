@@ -56,7 +56,9 @@
         <div class="artist-info">
             <h1>{{ artist["name"] }}</h1>
             <h2>Popularity: {{ artist["popularity"] }}</h2>
-            <h2>Genres: {{ artist["genres"] | map('title') | join(", ") }}</h2>
+            {% if artist["genres"] %}
+                <h2>Genres: {{ artist["genres"] | map('title') | join(", ") }}</h2>
+            {% endif %}
         </div>
         {% if "error" in artist %}
             <p>{{ artist["error"] }}</p>
