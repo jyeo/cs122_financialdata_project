@@ -74,5 +74,6 @@ def get_top_tracks(artist_id, token, market="US"):
             "album_image": track.get("album", {}).get("images", [{}])[0].get("url", ""),
             "track_url": track.get("external_urls", {}).get("spotify", "")
         })
+    top_tracks = sorted(top_tracks, key=lambda x: x["popularity"], reverse=True)
     
     return top_tracks

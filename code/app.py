@@ -47,6 +47,7 @@ def home():
                     artist_id = artist_info["id"]
                     top_albums = get_top_albums(artist_id, token)
                     top_tracks = get_top_tracks(artist_id, token)
+                    
                     save_to_cache(artist_name, {
                         "artist_info": artist_info,
                         "top_albums": top_albums,
@@ -69,6 +70,7 @@ def home():
                 visualize.plot_popularity_bar(df, artist_name, font_choice=current_font)
                 # This is the stalking link to the summoned plot
                 plot_path = "static/plot.png"
+                
 
     return render_template(
         'home.html',
