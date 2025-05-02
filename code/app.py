@@ -1,8 +1,11 @@
+import requests
 from flask import Flask, render_template, request, redirect, url_for
 from utils.spotify_api import get_spotify_token, get_artist_info, get_top_albums, get_top_tracks
 from utils.cache_manager import load_from_cache, save_to_cache
 from utils.data_analysis import build_track_dataframe, analyze
 from utils import visualize
+from utils.genre_api import get_top_genres_by_year
+import datetime
 
 app = Flask(__name__)
 
@@ -80,7 +83,8 @@ def home():
         analysis=analysis,
         track_analysis=track_analysis,
         plot_path=plot_path,
-        current_font=current_font
+        current_font=current_font,
+        current_year=datetime.datetime.now().year
     )
 
 @app.route('/set_font', methods=['POST'])
@@ -100,6 +104,65 @@ def set_font():
         plot_path=None,
         current_font=current_font
     )
+
+@app.route("/genre_analysis", methods=["POST"])
+def genre_analysis():
+    global current_font
+    year = request.form.get("year", type=int)
+    genre_data = get_top_genres_by_year(year)
+    genre_plot_path = visualize.plot_genre_popularity_bar(genre_data, year)
+
+    return render_template(
+        "home.html",
+        artist=None,
+        albums=[],
+        tracks=[],
+        analysis=None,
+        track_analysis=None,
+        plot_path=None,
+        genre_data=genre_data,
+        genre_plot_path=genre_plot_path,
+        genre_year=year,
+        current_font=current_font,
+        current_year=datetime.datetime.now().year
+    )
+
+@app.route("/genre_artists", methods=["POST"])
+def genre_artists():
+    global current_font
+    genre_name = request.form.get("genre_name")
+    token = get_spotify_token()
+
+    # Stalk artists from user-selected genre
+    url = "https://api.spotify.com/v1/search"
+    headers = {"Authorization": f"Bearer {token}"}
+    params = {
+        "q": f"genre:{genre_name}",
+        "type": "artist",
+        "limit": 10
+    }
+
+    response = requests.get(url, headers=headers, params=params)
+    artists = response.json().get("artists", {}).get("items", [])
+
+    genre_artist_data = [(a["name"], a["popularity"]) for a in artists]
+    genre_artist_plot = visualize.plot_genre_artist_bar(genre_artist_data, genre_name)
+
+    return render_template(
+        "home.html",
+        genre_artist_data=genre_artist_data,
+        selected_genre=genre_name,
+        genre_artist_plot=genre_artist_plot,
+        artist=None,
+        albums=[],
+        tracks=[],
+        analysis=None,
+        track_analysis=None,
+        plot_path=None,
+        current_font=current_font,
+        current_year=datetime.datetime.now().year
+    )
+
 
 @app.route('/refresh', methods=['POST'])
 def refresh():

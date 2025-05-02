@@ -36,7 +36,6 @@ def load_font(language='general'):
     plt.rcParams['axes.unicode_minus'] = False
     return font_prop
 
-
 def plot_popularity_bar(df, artist_name, font_choice='general'):
 
     artist_name = artist_name.title()
@@ -73,3 +72,39 @@ def plot_popularity_bar(df, artist_name, font_choice='general'):
     plot_path = os.path.join(static_folder, "plot.png")
     plt.savefig(plot_path)
     plt.close()
+
+def plot_genre_popularity_bar(genre_data, year):
+    genres = [g[0] for g in genre_data]
+    popularity = [g[1] for g in genre_data]
+
+    plt.figure(figsize=(10, 6))
+    plt.barh(genres[::-1], popularity[::-1], color="teal")
+    plt.title(f"Top Genres of {year}", fontsize=16)
+    plt.xlabel("Popularity (0–100)", fontsize=12)
+    plt.tight_layout()
+
+    static_folder = os.path.join(os.path.dirname(__file__), "../static")
+    os.makedirs(static_folder, exist_ok=True)
+    plot_path = os.path.join(static_folder, f"genre_plot_{year}.png")
+    plt.savefig(plot_path)
+    plt.close()
+
+    return f"static/genre_plot_{year}.png"
+
+def plot_genre_artist_bar(artist_data, genre_name):
+    names = [a[0] for a in artist_data]
+    popularity = [a[1] for a in artist_data]
+
+    plt.figure(figsize=(10, 6))
+    plt.barh(names[::-1], popularity[::-1], color="#9933ff")
+    plt.title(f"Top Artists – {genre_name.title()}", fontsize=16)
+    plt.xlabel("Popularity", fontsize=12)
+    plt.tight_layout()
+
+    static_folder = os.path.join(os.path.dirname(__file__), "../static")
+    os.makedirs(static_folder, exist_ok=True)
+    plot_path = os.path.join(static_folder, f"top_artists_{genre_name}.png")
+    plt.savefig(plot_path)
+    plt.close()
+
+    return f"static/top_artists_{genre_name}.png"

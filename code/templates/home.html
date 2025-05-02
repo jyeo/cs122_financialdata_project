@@ -49,6 +49,54 @@
         <p><strong>Current Font:</strong> {{ current_font }}</p>
     {% endif %} -->
 
+    <!-- Genre popularity by year -->
+    <form method="POST" action="/genre_analysis">
+        <label for="year">Enter Year for Genre Analysis:</label>
+        <input type="number" id="year" name="year" min="1900" max="{{ current_year }}" required>
+        <button type="submit">Get Top Genres</button>
+    </form>
+
+    {% if genre_data %}
+        <h3>Top Genres for {{ genre_year }}</h3>
+        <ul>
+            {% for genre, score in genre_data %}
+                <li>{{ genre }}: {{ score }}/100</li>
+            {% endfor %}
+        </ul>
+        {% if genre_plot_path %}
+            <img src="{{ genre_plot_path }}" alt="Genre Popularity Bar Chart" width="600">
+        {% endif %}
+    {% endif %}
+
+    <hr>
+
+    <!-- Genre-to-Top-Artists -->
+    <form method="POST" action="/genre_artists" style="margin-top: 30px;">
+        <label for="genre_select">Select a Genre to View Top Artists:</label>
+        <select name="genre_name" id="genre_select" required>
+            <option value="pop">Pop</option>
+            <option value="rock">Rock</option>
+            <option value="hip hop">Hip Hop</option>
+            <option value="indie">Indie</option>
+            <option value="latin">Latin</option>
+            <option value="k-pop">K-Pop</option>
+            <option value="j-pop">J-Pop</option>
+            <option value="r&b">R&B</option>
+        </select>
+        <button type="submit">Get Top Artists</button>
+    </form>
+
+    {% if genre_artist_data %}
+        <h3>Top Artists in {{ selected_genre }}</h3>
+        <ul>
+            {% for artist, popularity in genre_artist_data %}
+                <li>{{ artist }}: {{ popularity }}/100</li>
+            {% endfor %}
+        </ul>
+        {% if genre_artist_plot %}
+            <img src="{{ genre_artist_plot }}" alt="Top Artists Bar Chart" width="600">
+        {% endif %}
+    {% endif %}
 
     <hr>
 
