@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from utils.spotify_api import get_spotify_token, get_artist_info, get_top_albums, get_top_tracks
 from utils.cache_manager import load_from_cache, save_to_cache
 from utils.data_analysis import build_track_dataframe, analyze
@@ -101,19 +101,7 @@ def set_font():
 
 @app.route('/refresh', methods=['POST'])
 def refresh():
-    global current_font
-    # WHIP ME I CAN CHANGE
-    # PLZ I CAN CHANGE
-    return render_template(
-        'home.html',
-        artist=None,
-        albums=[],
-        tracks=[],
-        analysis=None,
-        track_analysis=None,
-        plot_path=None,
-        current_font=current_font
-    )
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
     app.run(debug=True)

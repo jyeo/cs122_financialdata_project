@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Artist Analysis</title>
+    <title>Graphify</title>
+    <link rel="icon" href="{{ url_for('static', filename='logo_nobg.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Spotify Artist Analysis</h1>
+    <div class="header-container">
+        <img src="{{ url_for('static', filename='logo_nobg.png') }}" alt="Graphify Logo" style="width: 75px; height: auto;">
+        <h1>Graphify</h1>
+
+    </div>
 
     <! PAPARAZZI >
-    <form method="POST">
-        <label for="artist_name">Enter Artist Name:</label>
-        <input type="text" id="artist_name" name="artist_name" required>
-        <button type="submit">Search</button>
-    </form>
+    <div class="search-container">
+        <form method="POST">
+            <label for="artist_name">Enter Artist Name:</label>
+            <input type="text" id="artist_name" name="artist_name" required>
+            <div class="button-container">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+        <! SLAP THE APPY >
+        <form action="/refresh" method="post" style="margin-top: 20px;">
+            <button type="submit">Refresh</button>
+        </form>
+    </div>
+
 
     <hr>
 
@@ -35,10 +50,6 @@
         <p><strong>Current Font:</strong> {{ current_font }}</p>
     {% endif %}
 
-    <! SLAP THE APPY >
-    <form action="/refresh" method="post" style="margin-top: 20px;">
-        <button type="submit">Refresh App</button>
-    </form>
 
     <hr>
 
