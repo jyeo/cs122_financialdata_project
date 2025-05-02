@@ -25,16 +25,15 @@
         </form>
         <! SLAP THE APPY >
         <form action="/refresh" method="post" style="margin-top: 20px;">
-            <button type="submit">Refresh</button>
+            <button type="submit">Clear</button>
         </form>
     </div>
 
 
-    <hr>
 
     <! FOUNTAIN PEN >
 
-{# Manual Control - OBSOLETE #}
+<!-- {# Manual Control - OBSOLETE #}
 {#<form action="/set_font" method="post">#}
 {#    <label for="font">Choose a font:</label>#}
 {#    <select name="font" id="font">#}
@@ -44,33 +43,40 @@
 {#        <option value="korean" {% if current_font == 'korean' %}selected{% endif %}>Korean (Noto Sans KR)</option>#}
 {#    </select>#}
 {#    <button type="submit">Apply Font</button>#}
-{#</form>#}
+{#</form>#} -->
 
-    {% if current_font %}
+    <!-- {% if current_font %}
         <p><strong>Current Font:</strong> {{ current_font }}</p>
-    {% endif %}
+    {% endif %} -->
 
 
     <hr>
 
     {% if artist %}
-        <h2>Artist: {{ artist["name"] }}</h2>
+        <div class="artist-info">
+            <h1>{{ artist["name"] }}</h1>
+            <h2>Popularity: {{ artist["popularity"] }}</h2>
+            <h2>Genres: {{ artist["genres"] | map('title') | join(", ") }}</h2>
+        </div>
         {% if "error" in artist %}
             <p>{{ artist["error"] }}</p>
         {% else %}
-        <h3>Top Albums:</h3>
-        <ul>
-            {% for album in albums %}
-                <li>
-                    <strong>{{ album["name"] }}</strong>
-                    <br>
-                    <img src="{{ album['image'] }}" alt="Album Cover" width="100">
-                </li>
-            {% endfor %}
-        </ul>
-
+        <div class="album-container">
+            <h3>Top Albums:</h3>
+            <ul class="album-list">
+                {% for album in albums %}
+                    <li>
+                        <strong>{{ album["name"] }}</strong>
+                        <br>
+                        <img src="{{ album['image'] }}" alt="Album Cover" width="100">
+                    </li>
+                {% endfor %}
+             </ul>
+        </div>
+    
+        <div class="track-container">
             <h3>Top Tracks:</h3>
-            <ul>
+            <ol class="track-list">
                 {% for track in tracks %}
                     <li>
                         <strong>{{ track["name"] }}</strong> (Popularity: {{ track["popularity"] }})
@@ -89,16 +95,18 @@
                         {% endif %}
                     </li>
                 {% endfor %}
-            </ul>
+            </ol>
+        </div>
+        {% if track_analysis %}
+        <div class="analysis-container">
+            <h3>Popularity Analysis</h3>
 
-            {% if track_analysis %}
-                <h3>Track Analysis:</h3>
-                <ul>
-                    <li>Average Popularity: {{ track_analysis["average_popularity"] }}</li>
-                    <li>Max Popularity: {{ track_analysis["max_popularity"] }}</li>
-                    <li>Min Popularity: {{ track_analysis["min_popularity"] }}</li>
-                </ul>
-            {% endif %}
+                <h4>Average: {{ track_analysis["average_popularity"] }}</h4>
+                <h4>Max: {{ track_analysis["max_popularity"] }}</h4>
+                <h4>Min: {{ track_analysis["min_popularity"] }}</h4>
+        </div>
+    {% endif %}
+        
         {% endif %}
     {% endif %}
     {% if plot_path %}

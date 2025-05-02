@@ -38,6 +38,8 @@ def load_font(language='general'):
 
 
 def plot_popularity_bar(df, artist_name, font_choice='general'):
+
+    artist_name = artist_name.title()
     font_prop = load_font(font_choice)
 
     sorted_df = df.sort_values("popularity", ascending=True)
@@ -46,7 +48,7 @@ def plot_popularity_bar(df, artist_name, font_choice='general'):
     plt.barh(
         sorted_df["track_name"],
         sorted_df["popularity"],
-        color="purple"
+        color="#206fb2"
     )
     if font_prop:
         plt.title(f"Track Popularity – {artist_name}", fontproperties=font_prop, fontsize=16)

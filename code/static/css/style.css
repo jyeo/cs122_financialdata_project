@@ -14,16 +14,28 @@ h1 {
     margin-top: 20px;
 }
 
+h2 {
+    text-align: center;
+    color: #206fb2; /* Bright blue */
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+h3 {
+    text-align: center;
+    color: #206fb2; /* Bright blue */
+    margin-top: 20px;
+}
 
 button {
     background-color: #1d82ba; 
-    color: white; 
+    color: #f9f9f9; 
     border: none; 
     border-radius: 20px; 
     padding: 10px 20px; 
     cursor: pointer;
     font-size: 1em; 
-    color: white;
+    color: #f9f9f9;
 }
 
 button:hover {
@@ -46,41 +58,85 @@ label {
 input[type="text"] {
     padding: 10px;
     width: 300px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
 
-ul {
+.album-list{
     list-style-type: none;
     padding: 0;
 }
 
-li {
+.album-container li {
     margin: 10px 0;
     padding: 10px;
-    background-color: #fff;
+    background-color: #f9f9f9;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    margin: 0 auto;
+    align-items: center;
+    list-style-position: inside;
+}
+
+.track-list li {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.analysis-container {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.analysis-container h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.analysis-container ul {
+    list-style-position: inside;
+    padding: 0;
+    margin: 0;
+}
+
 
 strong {
     color: #2c3e50;
 }
 
-/* Image styles */
+
 img {
     border-radius: 5px;
     margin-top: 10px;
 }
 
-/* Audio player styles */
+
 audio {
     margin-top: 10px;
 }
 
-/* Visualization styles */
+
 h3 {
     color: #34495e;
     margin-top: 20px;
@@ -109,4 +165,49 @@ img[alt="Track Popularity Bar Chart"] {
 
 .header-container img {
     margin-right: 0px;
+}
+
+.artist-info {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+}
+
+.artist-info h1 {
+    margin-top: 10px;
+    font-size: 2.5em;
+    color: #206fb2;
+    margin-bottom: 10px;
+}
+
+.artist-info h2 {
+    font-size: 1.2em;
+    color: #34495e;
+    margin: 5px 0;
+}
+
+.album-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+.album-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.album-list li {
+    text-align: center;
+    flex: 1 1 150px;
 }
