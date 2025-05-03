@@ -145,7 +145,11 @@ def genre_artists():
     response = requests.get(url, headers=headers, params=params)
     artists = response.json().get("artists", {}).get("items", [])
 
-    genre_artist_data = [(a["name"], a["popularity"]) for a in artists]
+    genre_artist_data = sorted(
+    [(a["name"].title(), a["popularity"]) for a in artists],
+    key=lambda x: x[1],  
+    reverse=True  
+    )
     genre_artist_plot = visualize.plot_genre_artist_bar(genre_artist_data, genre_name)
 
     return render_template(

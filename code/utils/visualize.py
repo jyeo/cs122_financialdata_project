@@ -82,6 +82,7 @@ def plot_genre_popularity_bar(genre_data, year):
     plt.title(f"Top Genres of {year}", fontsize=16)
     plt.xlabel("Popularity (0–100)", fontsize=12)
     plt.tight_layout()
+    plt.xlim(0, 100)
 
     static_folder = os.path.join(os.path.dirname(__file__), "../static")
     os.makedirs(static_folder, exist_ok=True)
@@ -100,6 +101,7 @@ def plot_genre_artist_bar(artist_data, genre_name):
     plt.title(f"Top Artists – {genre_name.title()}", fontsize=16)
     plt.xlabel("Popularity", fontsize=12)
     plt.tight_layout()
+    plt.xlim(0, 100)
 
     static_folder = os.path.join(os.path.dirname(__file__), "../static")
     os.makedirs(static_folder, exist_ok=True)

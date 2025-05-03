@@ -32,6 +32,6 @@ def get_top_genres_by_year(year, token=None, limit=50):
 
     sorted_genres = sorted(genres_count.items(), key=lambda x: x[1], reverse=True)[:10]
     max_val = sorted_genres[0][1] if sorted_genres else 1
-    normalized = [(genre, round((count / max_val) * 100)) for genre, count in sorted_genres]
+    normalized = [(genre.title(), round((count / max_val) * 100)) for genre, count in sorted_genres]
 
     return normalized
