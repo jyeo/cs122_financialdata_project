@@ -25,7 +25,7 @@ sudo conda install flask matplotlib numpy pandas requests
 sudo pip install flask matplotlib numpy pandas requests
 ```
 
-##Note for macOS users:##
+#### Note for macOS users:
 Avoid using sudo with `pip` or `conda` inside a virtual environment. Use `python -m venv testbox` and activate it as shown below.
 
 ## 🍎 macOS Terminal Setup (sudo was "disappeared")
