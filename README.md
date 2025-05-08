@@ -1,12 +1,12 @@
-# 🎶 CS 122 Project – Graphify: Visual Storytelling with Spotify Data
+# 🎶 CS 122 Project – Graphify: Visual Storytelling with Spotify Data 🎶
 
-## 👥 Authors
+## 👥 Authors 👥
 
 * Aaron Nguyen
 
 * Jasper Yeo
 
-## Requirements
+## 💭 Requirements 💭
 flask
 matplotlib
 numpy
@@ -25,7 +25,7 @@ Group install using `pip`
 sudo pip install flask matplotlib numpy pandas requests
 ```
 
-## Project Description (5 sentences)
+## 🔎 Project Description (5 sentences) 🔎
 
 Graphify is a Spotify-powered web application that transforms raw artist data into compelling visual stories. 
 Through an intuitive user interface, users can search for their favorite artists and instantly view engaging visualizations based on Spotify’s metrics
@@ -41,7 +41,7 @@ From the data containers, analysis that enables storytelling that includes: top 
 The storage of data analysis into graphical approaches like pandas and etc... will be given to the user via our app.
 
 
-## Project Outline/Plan
+## 📃 Project Outline/Plan 📃
 
 Interface Plan
 
@@ -57,7 +57,7 @@ Other Proposed features:
 
 * Popularity timeline
 
-What Made the Cut:
+📥 Features Implemented: 📥
 
 * Search for any artist by name
 
@@ -70,7 +70,7 @@ What Made the Cut:
 * Potential for future genre-level or playlist-level analysis
 
 
-## 🗂 Data Collection and Storage Plan (written by Aaron Nguyen)
+## 🗂 Data Collection and Storage Plan (written by Aaron Nguyen) 🗂
 
 For data collection, we will use the Spotify Web API to retrieve data details artist details, popularity metrics, discography, and top track information.
 
@@ -78,7 +78,7 @@ Data will be retrieved in real time or through a cache through authorised reques
 ALternatively, the design may be changed to store data with CSV or a cache - depending on overhead costs.
 If needed, directories will be organized by Spotify ID.
 
-📌 Executive Summary:
+📌 Executive Summary: 📌
 
 * Uses the Spotify Web API for real-time artist metadata, discography, and popularity scores
 * Organized using Spotify Artist IDs
@@ -86,12 +86,12 @@ If needed, directories will be organized by Spotify ID.
   * Cached via local JSON files (for speed + rate limits)
   * Stored in CSV format (for persistence and analysis)
 
-## 📊 Data Analysis and Visualization Plan (written by Jasper Yeo)
+## 📊 Data Analysis and Visualization Plan (written by Jasper Yeo) 📊
 
 Pandas Data-reader-related applications may be used to use raw data to be placed into our team's main interface.
 Main features of UI will guide the storytelling powered by the snapshot data retrieved from a cache.
 
-📌 Executive Summary:
+📌 Executive Summary: 📌
 
 * Built-in analysis using Pandas
 
@@ -102,7 +102,7 @@ Main features of UI will guide the storytelling powered by the snapshot data ret
   * Line plots for popularity over time
   * Custom artist comparison graphs
  
-## 🛠 Tech Stack
+## 🛠 Tech Stack 🛠
 | Layer         | Tools Used                       |
 | ------------- | -------------------------------- |
 | **Frontend**  | HTML + CSS (via Flask templates) |
@@ -110,7 +110,7 @@ Main features of UI will guide the storytelling powered by the snapshot data ret
 | **Data**      | Spotify Web API, JSON, CSV       |
 | **Libraries** | Pandas, Matplotlib, Requests     |
 
-## How to Start 101
+## 🐧 How to Start 101 🐧
 
 1. Do some inhumane cloning
 
@@ -141,7 +141,7 @@ python app.py
 
 Then open your browser at `http://localhost:5000` or other open port.
 
-## 📁 Folder Structure
+## 📁 Folder Structure 📁
 ```
 code/
 ├── app.py                  # Main Flask app
@@ -155,7 +155,7 @@ code/
 └── data/                   # Cached Spotify data (JSON or CSV)
 ```
 
-## Notes
+## 📺 Notes 📺
 
 List of common Git commands
 - git pull
