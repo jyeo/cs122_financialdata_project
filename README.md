@@ -192,6 +192,8 @@ List of common Git commands
 
 Caching ensures Spotify rate limits aren’t exceeded during development
 
+Symbols are another method to organise your page with [visual appeal](https://gist.github.com/rxaviers/7360908).
+
 ## Extra
 A .gitignore file and a license (MIT License) has been attached separately
 
