@@ -91,7 +91,9 @@ Other Proposed features:
 
 * Explore track volatility and other interesting metrics
 
-* Potential for future genre-level or playlist-level analysis
+### Other future routes:
+
+* More Genre-level or playlist-level analysis
 
 
 ## 🗂 Data Collection and Storage Plan (written by Aaron Nguyen) 🗂
