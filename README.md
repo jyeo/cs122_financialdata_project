@@ -175,8 +175,9 @@ pip install -r requirements.txt
 
 4. Run our team's application 
 
+__cd to our main folder containing app.py or use your favourite IDE__
+
 ```python
-cd to our main folder containing app.py or use your favourite IDE
 python app.py
 ```
 
