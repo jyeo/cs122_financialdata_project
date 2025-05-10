@@ -31,22 +31,22 @@ Avoid using sudo with `pip` or `conda` inside a virtual environment. Use `python
 ## 🍎 macOS Terminal Setup (sudo was "disappeared")
 
 #### Step 1: Navigate to our team's project folder
-cd path/to/your/project/code
+```cd path/to/your/project/code```
 
 #### Step 2: Create a virtual environment named 'testbox'
-python3 -m venv testbox
+```python3 -m venv testbox```
 
 #### Step 3: Activate the environment
-source testbox/bin/activate
+```source testbox/bin/activate```
 
 #### Step 4: Upgrade pip (optional but recommended)
-pip install --upgrade pip
+```pip install --upgrade pip```
 
 #### Step 5: Install project dependencies
-pip install flask matplotlib numpy pandas requests
+```pip install flask matplotlib numpy pandas requests```
 
 #### Step 6: Run the app
-python app.py
+```python app.py```
 
 
 ## 🔎 Project Description (5 sentences) 🔎
