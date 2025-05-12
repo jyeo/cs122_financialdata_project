@@ -17,5 +17,6 @@ def analyze(df):
     return {
         "average_popularity": np.mean(df["popularity"]),
         "max_popularity": df["popularity"].max(),
-        "min_popularity": df["popularity"].min()
+        "min_popularity": df["popularity"].min(),
+        "std_dev_popularity": round(np.std(df["popularity"]), 3)
     }
